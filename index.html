@@ -7,30 +7,33 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
     
     <style>
-        /* --- 基礎設定 --- */
+        /* --- 1. 基礎設定 (Reset & Base) --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        
         body {
-            background-color: #F9F7F2; 
-            color: #6B5C52; 
+            background-color: #F9F7F2; /* 奶茶色背景 */
+            color: #6B5C52; /* 深褐灰文字 */
             font-family: 'Noto Sans TC', sans-serif;
-            font-size: 14px; /* 字體稍微縮小一點點，更精緻 */
+            font-size: 14px; 
             line-height: 1.4;
+            -webkit-font-smoothing: antialiased; /* 讓字體更平滑 */
         }
 
-        /* --- 容器縮減 --- */
+        /* --- 2. 容器設定 (Container) --- */
         .container {
-            max-width: 480px; /* 限制最大寬度，讓價格不要跑太遠 */
+            max-width: 480px; /* 手機瀏覽最佳寬度 */
             margin: 0 auto;
-            padding: 40px 20px; /* 減少上下留白 */
+            padding: 40px 20px; /* 適度的邊距 */
         }
 
-        /* --- 標題區 --- */
+        /* --- 3. 標題區 (Header) --- */
         header {
             text-align: center;
-            margin-bottom: 30px; /* 縮短標題與內容距離 */
-            border-bottom: 1px solid #DBCCBF; /* 標題下加一條細線 */
+            margin-bottom: 30px; 
+            border-bottom: 1px solid #DBCCBF; /* 標題下方的分隔線 */
             padding-bottom: 20px;
         }
+
         h1 {
             font-family: 'Playfair Display', serif;
             font-size: 2rem; 
@@ -38,74 +41,81 @@
             letter-spacing: 1px;
         }
 
-        /* --- 區塊設定 --- */
+        /* --- 4. 服務區塊 (Section) --- */
         .service-section {
-            margin-bottom: 25px; /* 縮短區塊間距 */
+            margin-bottom: 25px; /* 區塊之間的距離 */
         }
+
         h2 {
             font-size: 1rem;
             font-weight: 500;
-            color: #8C7B70;
-            margin-bottom: 10px;
-            text-align: center; /* 小標題置中，更平衡 */
+            color: #8C7B70; /* 稍微淺一點的標題色 */
+            margin-bottom: 12px;
+            text-align: center;
+            text-transform: uppercase; /* 英文全大寫 */
+            letter-spacing: 1px;
         }
 
-        /* --- 項目列表樣式 --- */
-        
-        /* 通用項目列 */
+        /* --- 5. 項目列表核心樣式 (Item Row) --- */
         .item-row {
             display: flex;
-            align-items: baseline; /* 基線對齊 */
-            margin-bottom: 6px; /* 項目間距變緊 */
+            align-items: baseline; /* 讓文字底部對齊 */
+            margin-bottom: 6px; /* 項目之間的緊湊距離 */
         }
 
         .item-name {
-            flex-shrink: 0; /* 名稱不壓縮 */
+            flex-shrink: 0; /* 防止名稱被擠壓 */
             font-weight: 400;
         }
 
-        /* 關鍵修改：虛線引導 (Dotted Leader) */
+        /* 虛線引導 (Dotted Leader) */
         .dots {
-            flex-grow: 1; /* 佔滿中間空間 */
-            border-bottom: 1px dotted #C7B299; /* 虛線顏色 */
-            margin: 0 6px; /* 虛線左右留點空隙 */
+            flex-grow: 1; /* 自動填滿中間空間 */
+            border-bottom: 1px dotted #C7B299;
+            margin: 0 6px; /* 虛線左右的留白 */
             opacity: 0.6;
             position: relative;
-            top: -4px; /* 稍微往上調一點，對齊文字中心 */
+            top: -4px; /* 微調虛線位置 */
         }
 
+        /* 價格樣式 - 關鍵修改處 */
         .item-price {
             flex-shrink: 0;
             font-family: 'Playfair Display', serif;
             font-weight: 600;
+            
+            /* --- 這裡解決了對齊問題 --- */
+            width: 90px;      /* 給價格一個固定的寬度空間 (夠放 "$100 / 指") */
+            text-align: left; /* 讓內容靠左，這樣 $ 符號就會垂直對齊了 */
+            /* ----------------------- */
         }
 
-        /* --- 特殊排版：雙欄模式 (Two Column) --- */
-        /* 用於凝膠服務，讓短項目左右並排 */
+        /* --- 6. 雙欄排版 (Grid System) --- */
+        /* 用於凝膠服務，左右並排 */
         .grid-2-col {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* 左右各一半 */
-            column-gap: 20px; /* 左右欄中間的空隙 */
+            grid-template-columns: 1fr 1fr; /* 嚴格平分左右 */
+            column-gap: 15px; /* 左右欄位的間距 */
             row-gap: 0px; 
         }
 
-        /* --- 備註文字 --- */
+        /* --- 7. 備註文字 (Notes) --- */
         .note {
             font-size: 0.75rem;
             color: #9C8E85;
-            margin-top: 8px;
+            margin-top: 10px;
             text-align: center;
-            line-height: 1.4;
+            line-height: 1.5;
         }
+
         .sub-note {
             display: block;
             font-size: 0.75rem;
             color: #9C8E85;
             margin-left: 2px;
-            margin-top: -4px;
+            margin-top: -4px; /* 緊貼在上個項目下方 */
             margin-bottom: 8px;
         }
-
     </style>
 </head>
 <body>
@@ -116,7 +126,7 @@
         </header>
 
         <div class="service-section">
-            <h2>GEL SERVICES 凝膠</h2>
+            <h2>Gel Services 凝膠</h2>
             
             <div class="grid-2-col">
                 <div class="item-row">
@@ -149,12 +159,12 @@
                     <span class="dots"></span>
                     <span class="item-price">$1200</span>
                 </div>
-                 <div class="item-row">
+                <div class="item-row">
                     <span class="item-name">優惠款</span>
                     <span class="dots"></span>
                     <span class="item-price">$1399</span>
                 </div>
-                 <div class="item-row">
+                <div class="item-row">
                     <span class="item-name">造型</span>
                     <span class="dots"></span>
                     <span class="item-price">$100+</span>
@@ -178,7 +188,7 @@
         </div>
 
         <div class="service-section">
-            <h2>REMOVAL 卸甲</h2>
+            <h2>Removal 卸甲</h2>
             
             <div class="item-row">
                 <span class="item-name">本店卸甲續作</span>
@@ -193,7 +203,7 @@
             <div class="item-row">
                 <span class="item-name">卸凝膠 (四指下)</span>
                 <span class="dots"></span>
-                <span class="item-price">$50 /指</span>
+                <span class="item-price">$50 / 指</span>
             </div>
             <div class="item-row">
                 <span class="item-name">指甲油</span>
@@ -216,7 +226,7 @@
         </div>
 
         <div class="service-section">
-            <h2>CARE 保養</h2>
+            <h2>Care 保養</h2>
             
             <div class="item-row">
                 <span class="item-name">手部基礎保養</span>
