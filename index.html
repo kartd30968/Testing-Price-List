@@ -7,30 +7,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
     
     <style>
-        /* --- 1. 基礎設定 (Reset & Base) --- */
+        /* --- 基礎設定 --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body {
-            background-color: #F9F7F2; /* 奶茶色背景 */
-            color: #6B5C52; /* 深褐灰文字 */
+            background-color: #F9F7F2; 
+            color: #6B5C52; 
             font-family: 'Noto Sans TC', sans-serif;
             font-size: 14px; 
             line-height: 1.4;
-            -webkit-font-smoothing: antialiased; /* 讓字體更平滑 */
+            -webkit-font-smoothing: antialiased; 
         }
 
-        /* --- 2. 容器設定 (Container) --- */
+        /* --- 主容器 --- */
+        /* 保持 480px 是為了上面的雙欄排版 */
         .container {
-            max-width: 480px; /* 手機瀏覽最佳寬度 */
+            max-width: 480px; 
             margin: 0 auto;
-            padding: 40px 20px; /* 適度的邊距 */
+            padding: 40px 20px; 
         }
 
-        /* --- 3. 標題區 (Header) --- */
+        /* --- 標題區 --- */
         header {
             text-align: center;
             margin-bottom: 30px; 
-            border-bottom: 1px solid #DBCCBF; /* 標題下方的分隔線 */
+            border-bottom: 1px solid #DBCCBF; 
             padding-bottom: 20px;
         }
 
@@ -41,69 +42,72 @@
             letter-spacing: 1px;
         }
 
-        /* --- 4. 服務區塊 (Section) --- */
+        /* --- 區塊設定 --- */
         .service-section {
-            margin-bottom: 25px; /* 區塊之間的距離 */
+            margin-bottom: 35px; /* 增加區塊間距，讓分段更明顯 */
         }
 
         h2 {
             font-size: 1rem;
             font-weight: 500;
-            color: #8C7B70; /* 稍微淺一點的標題色 */
-            margin-bottom: 12px;
+            color: #8C7B70; 
+            margin-bottom: 15px;
             text-align: center;
-            text-transform: uppercase; /* 英文全大寫 */
+            text-transform: uppercase; 
             letter-spacing: 1px;
         }
 
-        /* --- 5. 項目列表核心樣式 (Item Row) --- */
+        /* --- 項目列表樣式 --- */
         .item-row {
             display: flex;
-            align-items: baseline; /* 讓文字底部對齊 */
-            margin-bottom: 6px; /* 項目之間的緊湊距離 */
+            align-items: baseline; 
+            margin-bottom: 8px; /* 稍微增加行距，減少擁擠感 */
         }
 
         .item-name {
-            flex-shrink: 0; /* 防止名稱被擠壓 */
+            flex-shrink: 0; 
             font-weight: 400;
         }
 
-        /* 虛線引導 (Dotted Leader) */
+        /* 虛線 */
         .dots {
-            flex-grow: 1; /* 自動填滿中間空間 */
+            flex-grow: 1; 
             border-bottom: 1px dotted #C7B299;
-            margin: 0 6px; /* 虛線左右的留白 */
-            opacity: 0.6;
+            margin: 0 6px; 
+            opacity: 0.5; /* 讓虛線更淡一點，不要太搶戲 */
             position: relative;
-            top: -4px; /* 微調虛線位置 */
+            top: -4px; 
         }
 
-        /* 價格樣式 - 關鍵修改處 */
+        /* 價格樣式 */
         .item-price {
             flex-shrink: 0;
             font-family: 'Playfair Display', serif;
             font-weight: 600;
-            
-            /* --- 這裡解決了對齊問題 --- */
-            width: 90px;      /* 給價格一個固定的寬度空間 (夠放 "$100 / 指") */
-            text-align: left; /* 讓內容靠左，這樣 $ 符號就會垂直對齊了 */
-            /* ----------------------- */
+            width: 85px;      /* 稍微縮小一點寬度 */
+            text-align: left; 
         }
 
-        /* --- 6. 雙欄排版 (Grid System) --- */
-        /* 用於凝膠服務，左右並排 */
+        /* --- 雙欄排版 (凝膠區) --- */
         .grid-2-col {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* 嚴格平分左右 */
-            column-gap: 15px; /* 左右欄位的間距 */
+            grid-template-columns: 1fr 1fr; 
+            column-gap: 15px; 
             row-gap: 0px; 
         }
 
-        /* --- 7. 備註文字 (Notes) --- */
+        /* --- !!! 關鍵修改：單欄收窄模式 !!! --- */
+        /* 這會把單欄的內容往中間集中，解決右邊太空的問題 */
+        .narrow-box {
+            max-width: 300px; /* 這裡控制單欄有多寬，數字越小越窄 */
+            margin: 0 auto;   /* 置中 */
+        }
+
+        /* --- 備註 --- */
         .note {
             font-size: 0.75rem;
             color: #9C8E85;
-            margin-top: 10px;
+            margin-top: 15px;
             text-align: center;
             line-height: 1.5;
         }
@@ -113,7 +117,7 @@
             font-size: 0.75rem;
             color: #9C8E85;
             margin-left: 2px;
-            margin-top: -4px; /* 緊貼在上個項目下方 */
+            margin-top: -6px; 
             margin-bottom: 8px;
         }
     </style>
@@ -171,15 +175,17 @@
                 </div>
             </div>
             
-            <div class="item-row" style="margin-top: 5px;">
-                <span class="item-name">底色</span>
-                <span class="dots"></span>
-                <span class="item-price">$300</span>
-            </div>
-            <div class="item-row">
-                <span class="item-name">補斷甲</span>
-                <span class="dots"></span>
-                <span class="item-price">$100 / 指</span>
+            <div class="narrow-box" style="margin-top: 10px;">
+                <div class="item-row">
+                    <span class="item-name">底色</span>
+                    <span class="dots"></span>
+                    <span class="item-price">$300</span>
+                </div>
+                <div class="item-row">
+                    <span class="item-name">補斷甲</span>
+                    <span class="dots"></span>
+                    <span class="item-price">$100 / 指</span>
+                </div>
             </div>
 
             <div class="note">
@@ -190,63 +196,68 @@
         <div class="service-section">
             <h2>Removal 卸甲</h2>
             
-            <div class="item-row">
-                <span class="item-name">本店卸甲續作</span>
-                <span class="dots"></span>
-                <span class="item-price">$200</span>
+            <div class="narrow-box">
+                <div class="item-row">
+                    <span class="item-name">本店卸甲續作</span>
+                    <span class="dots"></span>
+                    <span class="item-price">$200</span>
+                </div>
+                <div class="item-row">
+                    <span class="item-name">他店卸甲續作</span>
+                    <span class="dots"></span>
+                    <span class="item-price">$300</span>
+                </div>
+                <div class="item-row">
+                    <span class="item-name">卸凝膠 (四指下)</span>
+                    <span class="dots"></span>
+                    <span class="item-price">$50 / 指</span>
+                </div>
+                <div class="item-row">
+                    <span class="item-name">指甲油</span>
+                    <span class="dots"></span>
+                    <span class="item-price">$50</span>
+                </div>
+                
+                <div class="item-row">
+                    <span class="item-name">本店純卸甲</span>
+                    <span class="dots"></span>
+                    <span class="item-price">$400</span>
+                </div>
+                <span class="sub-note">含修剪</span>
+                
+                <div class="item-row">
+                    <span class="item-name">他店純卸甲</span>
+                    <span class="dots"></span>
+                    <span class="item-price">$500</span>
+                </div>
+                <span class="sub-note">含修剪</span>
             </div>
-            <div class="item-row">
-                <span class="item-name">他店卸甲續作</span>
-                <span class="dots"></span>
-                <span class="item-price">$300</span>
-            </div>
-            <div class="item-row">
-                <span class="item-name">卸凝膠 (四指下)</span>
-                <span class="dots"></span>
-                <span class="item-price">$50 / 指</span>
-            </div>
-            <div class="item-row">
-                <span class="item-name">指甲油</span>
-                <span class="dots"></span>
-                <span class="item-price">$50</span>
-            </div>
-            <div class="item-row">
-                <span class="item-name">本店純卸甲</span>
-                <span class="dots"></span>
-                <span class="item-price">$400</span>
-            </div>
-            <span class="sub-note">含修剪</span>
-            
-            <div class="item-row">
-                <span class="item-name">他店純卸甲</span>
-                <span class="dots"></span>
-                <span class="item-price">$500</span>
-            </div>
-            <span class="sub-note">含修剪</span>
         </div>
 
         <div class="service-section">
             <h2>Care 保養</h2>
             
-            <div class="item-row">
-                <span class="item-name">手部基礎保養</span>
-                <span class="dots"></span>
-                <span class="item-price">$500</span>
-            </div>
-            <div class="item-row">
-                <span class="item-name">足部基礎保養</span>
-                <span class="dots"></span>
-                <span class="item-price">$600</span>
-            </div>
-            <div class="item-row">
-                <span class="item-name">足底嫩膚保養</span>
-                <span class="dots"></span>
-                <span class="item-price">$800</span>
-            </div>
-            <div class="item-row">
-                <span class="item-name">足部深層保養</span>
-                <span class="dots"></span>
-                <span class="item-price">$1100</span>
+            <div class="narrow-box">
+                <div class="item-row">
+                    <span class="item-name">手部基礎保養</span>
+                    <span class="dots"></span>
+                    <span class="item-price">$500</span>
+                </div>
+                <div class="item-row">
+                    <span class="item-name">足部基礎保養</span>
+                    <span class="dots"></span>
+                    <span class="item-price">$600</span>
+                </div>
+                <div class="item-row">
+                    <span class="item-name">足底嫩膚保養</span>
+                    <span class="dots"></span>
+                    <span class="item-price">$800</span>
+                </div>
+                <div class="item-row">
+                    <span class="item-name">足部深層保養</span>
+                    <span class="dots"></span>
+                    <span class="item-price">$1100</span>
+                </div>
             </div>
         </div>
 
