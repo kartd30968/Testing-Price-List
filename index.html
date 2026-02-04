@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
     
     <style>
-        /* --- 基礎設定 --- */
+        /* --- 1. 基礎設定 --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body {
@@ -19,21 +19,22 @@
             -webkit-font-smoothing: antialiased; 
         }
 
-        /* --- 主容器 --- */
+        /* --- 2. 主容器 --- */
         .container {
             max-width: 480px; 
             margin: 0 auto;
-            padding: 40px 10px; /* 左右邊距縮小，讓中間內容主導 */
+            /* 左右留一點緩衝，以免貼邊 */
+            padding: 40px 15px; 
         }
 
-        /* --- 標題區 --- */
+        /* --- 3. 標題區 --- */
         header {
             text-align: center;
             margin-bottom: 30px; 
             border-bottom: 1px solid #DBCCBF; 
             padding-bottom: 20px;
-            margin-left: 20px; /* 為了配合下方視覺，標題保持在寬容器中心 */
-            margin-right: 20px;
+            margin-left: 10px;
+            margin-right: 10px;
         }
 
         h1 {
@@ -43,7 +44,7 @@
             letter-spacing: 1px;
         }
 
-        /* --- 區塊設定 --- */
+        /* --- 4. 區塊設定 --- */
         .service-section {
             margin-bottom: 35px; 
         }
@@ -58,7 +59,7 @@
             letter-spacing: 1px;
         }
 
-        /* --- 項目列表樣式 --- */
+        /* --- 5. 項目列表樣式 --- */
         .item-row {
             display: flex;
             align-items: baseline; 
@@ -73,7 +74,7 @@
         .dots {
             flex-grow: 1; 
             border-bottom: 1px dotted #C7B299;
-            margin: 0 6px; 
+            margin: 0 4px; /* 稍微縮小虛線兩側距離 */
             opacity: 0.5;
             position: relative;
             top: -4px; 
@@ -83,31 +84,36 @@
             flex-shrink: 0;
             font-family: 'Playfair Display', serif;
             font-weight: 600;
-            width: 85px;      
+            /* --- 微調價格寬度 --- */
+            /* 從 90px 改為 72px，確保左右兩欄能完美 50/50 分割不擁擠 */
+            width: 72px;      
             text-align: left; 
         }
 
-        /* --- 關鍵修改 1：凝膠專用的置中容器 --- */
+        /* --- 6. 關鍵修改：凝膠專用的全寬容器 --- */
         .gel-box {
-            max-width: 370px; /* 限制寬度：夠放兩欄，但比全螢幕窄 */
-            margin: 0 auto;   /* 置中 */
+            /* 這裡改成 100%，它會自動抓螢幕的中線 */
+            width: 100%; 
+            margin: 0 auto;
         }
 
-        /* --- 雙欄排版 (Grid) --- */
+        /* --- 7. 雙欄排版 (Grid) --- */
         .grid-2-col {
             display: grid;
+            /* 1fr 1fr 代表左右各佔 50%，中線絕對置中 */
             grid-template-columns: 1fr 1fr; 
-            column-gap: 15px; /* 欄位間距 */
+            column-gap: 24px; /* 加大中線的間隔，讓分界更明顯 */
             row-gap: 0px; 
         }
 
-        /* --- 關鍵修改 2：單欄專用的窄容器 (卸甲/保養) --- */
+        /* --- 8. 單欄專用的窄容器 (卸甲/保養) --- */
+        /* 這裡不需要動，維持稍微收窄的精緻感 */
         .narrow-box {
-            max-width: 300px; /* 這邊維持較窄，讓單欄看起來精緻 */
+            max-width: 300px; 
             margin: 0 auto;   
         }
 
-        /* --- 備註 --- */
+        /* --- 9. 備註 --- */
         .note {
             font-size: 0.75rem;
             color: #9C8E85;
