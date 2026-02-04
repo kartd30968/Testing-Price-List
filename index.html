@@ -20,11 +20,10 @@
         }
 
         /* --- 主容器 --- */
-        /* 保持 480px 是為了上面的雙欄排版 */
         .container {
             max-width: 480px; 
             margin: 0 auto;
-            padding: 40px 20px; 
+            padding: 40px 10px; /* 左右邊距縮小，讓中間內容主導 */
         }
 
         /* --- 標題區 --- */
@@ -33,6 +32,8 @@
             margin-bottom: 30px; 
             border-bottom: 1px solid #DBCCBF; 
             padding-bottom: 20px;
+            margin-left: 20px; /* 為了配合下方視覺，標題保持在寬容器中心 */
+            margin-right: 20px;
         }
 
         h1 {
@@ -44,7 +45,7 @@
 
         /* --- 區塊設定 --- */
         .service-section {
-            margin-bottom: 35px; /* 增加區塊間距，讓分段更明顯 */
+            margin-bottom: 35px; 
         }
 
         h2 {
@@ -61,7 +62,7 @@
         .item-row {
             display: flex;
             align-items: baseline; 
-            margin-bottom: 8px; /* 稍微增加行距，減少擁擠感 */
+            margin-bottom: 8px; 
         }
 
         .item-name {
@@ -69,38 +70,41 @@
             font-weight: 400;
         }
 
-        /* 虛線 */
         .dots {
             flex-grow: 1; 
             border-bottom: 1px dotted #C7B299;
             margin: 0 6px; 
-            opacity: 0.5; /* 讓虛線更淡一點，不要太搶戲 */
+            opacity: 0.5;
             position: relative;
             top: -4px; 
         }
 
-        /* 價格樣式 */
         .item-price {
             flex-shrink: 0;
             font-family: 'Playfair Display', serif;
             font-weight: 600;
-            width: 85px;      /* 稍微縮小一點寬度 */
+            width: 85px;      
             text-align: left; 
         }
 
-        /* --- 雙欄排版 (凝膠區) --- */
+        /* --- 關鍵修改 1：凝膠專用的置中容器 --- */
+        .gel-box {
+            max-width: 370px; /* 限制寬度：夠放兩欄，但比全螢幕窄 */
+            margin: 0 auto;   /* 置中 */
+        }
+
+        /* --- 雙欄排版 (Grid) --- */
         .grid-2-col {
             display: grid;
             grid-template-columns: 1fr 1fr; 
-            column-gap: 15px; 
+            column-gap: 15px; /* 欄位間距 */
             row-gap: 0px; 
         }
 
-        /* --- !!! 關鍵修改：單欄收窄模式 !!! --- */
-        /* 這會把單欄的內容往中間集中，解決右邊太空的問題 */
+        /* --- 關鍵修改 2：單欄專用的窄容器 (卸甲/保養) --- */
         .narrow-box {
-            max-width: 300px; /* 這裡控制單欄有多寬，數字越小越窄 */
-            margin: 0 auto;   /* 置中 */
+            max-width: 300px; /* 這邊維持較窄，讓單欄看起來精緻 */
+            margin: 0 auto;   
         }
 
         /* --- 備註 --- */
@@ -111,7 +115,7 @@
             text-align: center;
             line-height: 1.5;
         }
-
+        
         .sub-note {
             display: block;
             font-size: 0.75rem;
@@ -132,51 +136,51 @@
         <div class="service-section">
             <h2>Gel Services 凝膠</h2>
             
-            <div class="grid-2-col">
-                <div class="item-row">
-                    <span class="item-name">透明凝膠</span>
-                    <span class="dots"></span>
-                    <span class="item-price">$780</span>
+            <div class="gel-box">
+                <div class="grid-2-col">
+                    <div class="item-row">
+                        <span class="item-name">透明凝膠</span>
+                        <span class="dots"></span>
+                        <span class="item-price">$780</span>
+                    </div>
+                    <div class="item-row">
+                        <span class="item-name">單色凝膠</span>
+                        <span class="dots"></span>
+                        <span class="item-price">$1000</span>
+                    </div>
+                    <div class="item-row">
+                        <span class="item-name">鏡面粉</span>
+                        <span class="dots"></span>
+                        <span class="item-price">$1200</span>
+                    </div>
+                    <div class="item-row">
+                        <span class="item-name">貓眼</span>
+                        <span class="dots"></span>
+                        <span class="item-price">$1100</span>
+                    </div>
+                    <div class="item-row">
+                        <span class="item-name">法式</span>
+                        <span class="dots"></span>
+                        <span class="item-price">$1300</span>
+                    </div>
+                    <div class="item-row">
+                        <span class="item-name">漸層</span>
+                        <span class="dots"></span>
+                        <span class="item-price">$1200</span>
+                    </div>
+                    <div class="item-row">
+                        <span class="item-name">優惠款</span>
+                        <span class="dots"></span>
+                        <span class="item-price">$1399</span>
+                    </div>
+                    <div class="item-row">
+                        <span class="item-name">造型</span>
+                        <span class="dots"></span>
+                        <span class="item-price">$100+</span>
+                    </div>
                 </div>
-                <div class="item-row">
-                    <span class="item-name">單色凝膠</span>
-                    <span class="dots"></span>
-                    <span class="item-price">$1000</span>
-                </div>
-                <div class="item-row">
-                    <span class="item-name">鏡面粉</span>
-                    <span class="dots"></span>
-                    <span class="item-price">$1200</span>
-                </div>
-                <div class="item-row">
-                    <span class="item-name">貓眼</span>
-                    <span class="dots"></span>
-                    <span class="item-price">$1100</span>
-                </div>
-                <div class="item-row">
-                    <span class="item-name">法式</span>
-                    <span class="dots"></span>
-                    <span class="item-price">$1300</span>
-                </div>
-                <div class="item-row">
-                    <span class="item-name">漸層</span>
-                    <span class="dots"></span>
-                    <span class="item-price">$1200</span>
-                </div>
-                <div class="item-row">
-                    <span class="item-name">優惠款</span>
-                    <span class="dots"></span>
-                    <span class="item-price">$1399</span>
-                </div>
-                <div class="item-row">
-                    <span class="item-name">造型</span>
-                    <span class="dots"></span>
-                    <span class="item-price">$100+</span>
-                </div>
-            </div>
-            
-            <div class="narrow-box" style="margin-top: 10px;">
-                <div class="item-row">
+                
+                <div class="item-row" style="margin-top: 5px;">
                     <span class="item-name">底色</span>
                     <span class="dots"></span>
                     <span class="item-price">$300</span>
@@ -186,10 +190,10 @@
                     <span class="dots"></span>
                     <span class="item-price">$100 / 指</span>
                 </div>
-            </div>
-
-            <div class="note">
-                (凝膠項目含基礎保養、建構加厚 足部均+$100)
+                
+                <div class="note">
+                    (凝膠項目含基礎保養、建構加厚 足部均+$100)
+                </div>
             </div>
         </div>
 
